@@ -30,8 +30,9 @@ I use the Arduino Uno R3 microcontroller, for the encoder as I said I use a phot
 - [bunch of cables, resistors and a protoboard](https://solectroshop.com/es/placas-de-pruebas-protoboard/256-placa-prototipo-protoboard-breadboard-400-puntos-arduino-5905323238381.html?srsltid=AfmBOorbpLdx1sRy4ew9aUN4s4LWh7R0Y5SuwKCbuFp5khx8BQtBL-sKNPI) 2'00€
 
 For a total of less than 35€, you can make yourself a dispenser with a simple circuit:
-
-//////// incluir fritzing circuito
+<p align="center">
+  <img src="images/Feeder4pets_bb.svg" alt="Circuito" width="700"/>
+</p>
 
 ## ✒️ Software
 The code for this application intends to save the most energy possible to be able to execute with an external power bank and be very efficient with the energy. To do that, I use interruptions using the RTC3231 and the library [_LowPower_](https://docs.arduino.cc/libraries/lowpower_lowpowerlab/) of LowPowerLab to use as little as ~9–13 mA.
