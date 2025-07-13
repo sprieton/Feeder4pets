@@ -5,7 +5,7 @@
 
 // Pin definitions
 const byte MILLPIN = 9;
-const byte LEDPIN = 7;
+const byte LEDPIN = 4;
 const int FOTRESPIN = A0;
 #define CLOCK_INTERRUPT_PIN 2   // the pin that is connected to SQW
 
@@ -132,6 +132,9 @@ void setup() {
   // Define servo as mill
   mill.attach(MILLPIN);
   mill.writeMicroseconds(MILLSTOP);  // stop mill
+
+  // Run a step to check the funcionality
+  millStep();
 
   // Define LED
   pinMode(LEDPIN, OUTPUT);
