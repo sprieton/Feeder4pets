@@ -12,13 +12,23 @@ This simple project could escalate very quickly into a more complex project if y
 ### 🎡 The MILL 
 With this approach, I only need to make a horizontal "_mill_" with 8 mill blades that will push the food around, and add a hole between two of them. One day of food 1/8 rotation of the mill, easy isn't it?.
 
-Well, the **BIG PROBLEM** wasn't making it rotate, was **how to make it rotate exactly 1/8 of the perimeter**, you can do that with big servomotors with feedback, I have a humble servo [SG90 360º](https://www.micro-semiconductor.fr/datasheet/b6-SER0043.pdf) and it can't control position. So I developed an encoder for the "_mill_" similar to the [encoders of the mouse wheels](https://en.wikipedia.org/wiki/Rotary_encoder), using a photoresistor, a cardboard piece pierced, and a LED as you can see in the image below.
+Well, the **BIG PROBLEM** wasn't making it rotate, was **how to make it rotate exactly 1/8 of the perimeter**, you can do that with big servomotors with feedback, I have a humble servo [SG90 360º](https://www.micro-semiconductor.fr/datasheet/b6-SER0043.pdf) and it can't control position. So I developed an encoder for the "_mill_" similar to the [encoders of the mouse wheels](https://en.wikipedia.org/wiki/Rotary_encoder), using a photoresistor, a cardboard piece pierced, and a LED as you can see in the image below, the servomotor and the encoder electronics are between one of the "_mill_" blades. Also, you can see the encoder attached to the bottom of the "_mill_".
 
-/////////////////////// Esquema del encoder
+<p align="center">
+  <img src="images/Encoder_detail.jpeg" alt="Encoder" height="500"/>
+</p>
 
-Finally, the whole Mill system is like the following drawings.
+Finally, I prepared some drawings that I created on the marvelous platform [OneShape](https://www.onshape.com/en/) where you can [edit my drawing](https://cad.onshape.com/documents/982dc77cace2c5df638cb5e2/w/1ef73fe32f59e030ae584a7b/e/b6536aec28525660e01a2584) to be more detailed with the measures, as you can see below, and included them in the "blueprint" directory.
 
-/////////////////////// Planos completos
+<p align="center">
+  <img src="images/Feeder4pets.png" alt="Encoder" height="600"/>
+</p>
+
+For some clarity, here you have a general point of view of the final result.
+
+<p align="center">
+  <img src="images/Feeder_view.jpeg" alt="Encoder" height="500"/>
+</p>
 
 ### 📎 Circuit
 I use the Arduino Uno R3 microcontroller, for the encoder as I said I use a photoresistor and a LED, for the rotation a servo, and finally to keep the time an RTC. The full list is:
@@ -31,11 +41,13 @@ I use the Arduino Uno R3 microcontroller, for the encoder as I said I use a phot
 
 For a total of less than 35€, you can make yourself a dispenser with a simple circuit:
 <p align="center">
-  <img src="images/Feeder4pets_bb.svg" alt="Circuito" width="700"/>
+  <img src="images/Feeder4pets_bb.svg" alt="Circuit_scheme" width="700"/>
 </p>
 
 ## ✒️ Software
-The code for this application intends to save the most energy possible to be able to execute with an external power bank and be very efficient with the energy. To do that, I use interruptions using the RTC3231 and the library [_LowPower_](https://docs.arduino.cc/libraries/lowpower_lowpowerlab/) of LowPowerLab to use as little as ~9–13 mA.
+This application is **very straightforward in terms of software**. Only needs to create interruptions using the RTC module, and then move the "_mill_" reading of the photoresistor to the next hole in the encoder. To do this, the library "[_RTClib_](https://docs.arduino.cc/libraries/rtclib/)" of Adafruit.
+
+Also, I want to **highlight another interesting feature of this application**, which is the objective of saving the most energy to **run the Arduino on an external power bank as long as possible**. To do that, I use the library [_LowPower_](https://docs.arduino.cc/libraries/lowpower_lowpowerlab/) of LowPowerLab to use as little as ~9–13 mA.
 
 To do this, we use the Low Power library like:
 ```cpp
