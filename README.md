@@ -45,9 +45,9 @@ For a total of less than 35€, you can make yourself a dispenser with a simple 
 </p>
 
 ## ✒️ Software
-This application is straightforward in terms of software. Only needs to create interruptions using the RTC module, and then move the "_mill_" reading of the photoresistor to the next hole in the encoder. To do this, the library "[_RTClib_](https://docs.arduino.cc/libraries/rtclib/)" of Adafruit.
+This application is **very straightforward in terms of software**. Only needs to create interruptions using the RTC module, and then move the "_mill_" reading of the photoresistor to the next hole in the encoder. To do this, the library "[_RTClib_](https://docs.arduino.cc/libraries/rtclib/)" of Adafruit.
 
-Also, I want to highlight another interesting feature of this application, which is the objective of saving the most energy to run the Arduino on an external power bank as long as possible. To do that, I use the library [_LowPower_](https://docs.arduino.cc/libraries/lowpower_lowpowerlab/) of LowPowerLab to use as little as ~9–13 mA.
+Also, I want to **highlight another interesting feature of this application**, which is the objective of saving the most energy to **run the Arduino on an external power bank as long as possible**. To do that, I use the library [_LowPower_](https://docs.arduino.cc/libraries/lowpower_lowpowerlab/) of LowPowerLab to use as little as ~9–13 mA.
 
 To do this, we use the Low Power library like:
 ```cpp
